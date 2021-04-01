@@ -5,42 +5,26 @@ using namespace std;
 
 void yashio();
 
+int stringToInt(string x,int n){
+
+    if(n==0){
+        return 0;
+    }
+
+    return stringToInt(x,n-1)*10 + (x[n-1] - '0');
+
+}
+
 void solve()
 {
-    int x,r,m;
-
-    cin>>x>>r>>m;
-
-    int t1=(r*60),t2=(m*60),total;
-
-    if(t1>t2){
-        cout<<"NO"<<endl;
-    }
-    else{
-
-        if(t1>x){
-            total = x + (t1-x)*2;
-        }
-        else{
-            total=x;
-        }
-
-        if(total<=t2){
-            cout<<"YES"<<endl;
-        }
-        else{
-            cout<<"NO"<<endl;
-        }
-
-    }
-
+    cout<<stringToInt("1234",4);
 }
 
 signed main()
 {
     yashio();
     int T = 1;
-    cin>>T;
+    //cin>>T;
     while(T--)
     {
         solve();
