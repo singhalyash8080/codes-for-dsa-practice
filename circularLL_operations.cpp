@@ -39,6 +39,46 @@ void cll_insert(node *&head, int data){
 
 }
 
+node* cll_getNode(node *head, int data){
+
+    node *temp = head;
+
+    while(temp->next!=head){
+        if(temp->data == data){
+            return temp;
+        }
+        temp=temp->next;
+    }
+
+    if(temp->data == data){
+        return temp;
+    }
+
+    return NULL;
+}
+
+void cll_deleteNode(node *&head, int data){
+
+    node *del = cll_getNode(head,data);
+
+    if(del==NULL){
+        return;
+    }
+
+    if(del==head){
+        head=head->next;
+    }
+
+    node *temp = head;
+
+    while(temp->next!=del){
+        temp=temp->next;
+    }
+
+    temp->next=del->next;
+    delete del;
+}
+
 void cll_print(node *head){
 
     node *temp=head;
@@ -61,6 +101,7 @@ void solve()
     cll_insert(head,2);
     cll_insert(head,1);
 
+    // cll_deleteNode(head,2);
     cll_print(head);
 
 
