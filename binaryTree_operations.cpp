@@ -66,6 +66,84 @@ void printTreePostorder(node *root){
     cout<<root->data<<" ";
 }
 
+int heightOfTree(node *root){
+
+    if(root==NULL){
+        return 0;
+    }
+
+    int h1 = heightOfTree(root->left);
+    int h2 = heightOfTree(root->right);
+
+    return (max(h1,h2)+1);
+}
+
+void printKthLevel(node *root, int k){
+
+    if(root == NULL){
+        return;
+    }
+
+    if(k==1){
+        cout<<root->data<<" ";
+        return;
+    }
+
+    printKthLevel(root->left,k-1);
+    printKthLevel(root->right,k-1);
+}
+
+void printLevelOrder(node *root){
+
+    if(root==NULL){
+        return;
+    }
+
+    int h = heightOfTree(root);
+
+    for (int i = 1; i <=h; ++i)
+    {
+        printKthLevel(root,i);
+        cout<<endl;
+    }
+}
+
+void bfs(node *root){
+
+    queue<node *> q;
+    q.push(root);
+    q.push(NULL);
+
+    while(!q.empty()){
+
+        node * f = q.front();
+
+        if(f==NULL){
+            cout<<endl;
+            q.pop();
+            if(!q.empty()){
+                q.push(NULL);
+            }
+        }
+        else{
+            cout<<(f->data)<<" ";
+            q.pop();
+
+            if(f->left){
+                q.push(f->left);
+            }
+
+            if(f->right){
+                q.push(f->right);
+            }
+
+        }
+
+    }
+
+    return;
+}
+
 void solve()
 {
     node *root = buildTree();
@@ -75,6 +153,14 @@ void solve()
     printTreeInorder(root);
     cout<<endl;
     printTreePostorder(root);
+
+    cout<<endl;
+
+    // cout<<heightOfTree(root);
+    // printKthLevel(root,3);
+
+    // printLevelOrder(root);
+    bfs(root);
 
 }
 
