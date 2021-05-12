@@ -56,6 +56,7 @@ int heightOfTree(node *root){
     return (max(h1,h2)+1);
 }
 
+//O(n^2) approach
 int diameter(node *root){
 
     if(root==NULL){
