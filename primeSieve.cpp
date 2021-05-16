@@ -5,7 +5,11 @@ using namespace std;
 
 void yashio();
 
-void primeSieve(int *a, int n){
+// prints prime numbers less than n
+void primeSieve(int n){
+
+    //creating a vector for n digits and marking every number as non prime in the begining
+    vector <bool> a(n+1,0);
 
     //marking odd numbers as 1 in the begining
     for (int i = 3; i <=n; i+=2)
@@ -13,8 +17,8 @@ void primeSieve(int *a, int n){
         a[i]=1;
     }
 
-    //iterating numbers marked as 1
-    for (int i = 3; i <=n; i+=2)
+    //iterating odd numbers marked as 1 till i^2<=n
+    for (int i = 3; i*i <=n; i+=2)
     {
         if(a[i]){
 
@@ -30,17 +34,6 @@ void primeSieve(int *a, int n){
     a[1]=0;
     a[2]=1;
 
-}
-
-void solve()
-{
-    int a[1000]={0},n;
-
-    cin>>n;
-
-    primeSieve(a,n);
-
-
     //printing prime numbers
     for (int i = 1; i <= n; ++i)
     {
@@ -48,6 +41,16 @@ void solve()
             cout<<i<<endl;
         }
     }
+
+}
+
+void solve()
+{
+    int n;
+
+    cin>>n;
+
+    primeSieve(n);
 }
 
 signed main()
