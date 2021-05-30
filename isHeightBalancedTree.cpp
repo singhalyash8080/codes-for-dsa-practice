@@ -95,13 +95,13 @@ HBPair isHeightBalanced(node *root){
 
     p.height = max(left.height,right.height)+1;
 
-    if(abs(left.height-right.height)>=1 and left.balance and right.balance){
+    if(abs(left.height-right.height)<=1 and left.balance and right.balance){
 
         p.balance = true;
     }
     else{
 
-        p.balance = true;
+        p.balance = false;
     }
 
     return p;
