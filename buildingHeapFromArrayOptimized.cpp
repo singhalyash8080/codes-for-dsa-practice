@@ -39,6 +39,7 @@ void heapify(vector <int> &v, int idx){
 
 }
 
+// O(n) approach - check g4g for proof
 void buildHeapOptimized(vector <int> &v){
 
     for (int i = ((v.size()-1)/2); i >=1; --i)
