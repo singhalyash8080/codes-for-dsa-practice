@@ -16,7 +16,6 @@ void printSubsequences(string s,set <string> &st){
 
         string x = s;
 
-
         s.erase(s.begin()+i,s.begin()+i+1);
 
         st.insert(s);
